@@ -26,7 +26,6 @@ fn part2(vecvec: Vec<Vec<i32>>){
         if calory_sum > minval{
             stacked_elves.remove(stacked_elves.iter().position(|&el| el == minval).unwrap());
             stacked_elves.push(calory_sum);
-            if stacked_elves.len() > 3 {panic!("stacked_elves Vector is wrong size") }
         }
     }
     println!("{}",stacked_elves.iter().sum::<i32>())
