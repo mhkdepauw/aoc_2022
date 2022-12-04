@@ -7,7 +7,7 @@ fn main() {
     part2(megavec.clone());
 }
 
-fn part1(vecvec: Vec<Vec<i32>>){
+fn part1(vecvec: Vec<Vec<i32>>) {
     let mut biggest_number = 0;
     for vec in vecvec{
         let calory_sum = vec.iter().sum();
@@ -18,7 +18,7 @@ fn part1(vecvec: Vec<Vec<i32>>){
     println!("{}",biggest_number)
 }
 
-fn part2(vecvec: Vec<Vec<i32>>){
+fn part2(vecvec: Vec<Vec<i32>>) {
     let mut stacked_elves = vec![0,0,0];
     for vec in vecvec{
         let calory_sum: i32 = vec.iter().sum();

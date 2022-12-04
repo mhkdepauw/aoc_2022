@@ -1,4 +1,5 @@
 use std::fs::read_to_string;
+use regex::Regex;
 
 pub fn read_string(year: i32, day: i32) -> String {
     let path = format!("src/y{}/d{:0>2}/input.txt", year, day);
@@ -59,6 +60,25 @@ pub fn read_split_on_comma_as_i32(year: i32, day: i32) -> Vec<i32> {
     return read_split_on_comma(year, day)
         .into_iter()
         .map(| l | l.parse::<i32>().unwrap())
+        .collect();
+}
+
+pub fn regex_parse(s: &str, regex_s: &str) -> Vec<String> {
+    let re = Regex::new(regex_s).expect("Invalid RegEx");
+    let caps = re.captures(s).unwrap();
+
+    let mut res: Vec<String> = Vec::new();
+
+    for i in 1..caps.len() {
+        res.push(caps.get(i).unwrap().as_str().to_string());
+    }
+
+    return res;
+}
+
+pub fn regex_parse_as_i32(s: &str, regex_s: &str) -> Vec<i32> {
+    return regex_parse(s, regex_s).iter()
+        .map(| m | m.parse::<i32>().unwrap())
         .collect();
 }
 //credit to https://github.com/JonasssC/AoC-Rust/blob/main/src/lib.rs
